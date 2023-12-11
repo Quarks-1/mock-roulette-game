@@ -1,2 +1,2 @@
-# f23_team_33
-Repository for f23_team_33
+# Mock Roulette Game
+Repository for a Mock Roulette Game made with Django, JS, HTML. Copied from private class repository, thus commit history has been lost.
