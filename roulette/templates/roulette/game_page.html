@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<title>Roulette</title>
+	<link href="{% static 'css/game_page.css' %}" rel="stylesheet" type="text/css">
+	<script src="{% static 'js/game_page.js' %}"></script>
+	<link rel="shortcut icon" href="{%  static 'img/favicon.ico' %}">
+</head>
+
+<body>
+	<div class="header">
+		{% comment %} Instructions on how to play the game {% endcomment %}
+		<div class="instructions-container">
+			<div id="instructions" onClick="openInstructionModal()">
+				Instructions
+			</div>
+			<div id="instructions-modal">
+				<p class="ghost">Spacer</p>
+				<div class="modal-content">
+					<span class="close" onClick="closeModal()">&times;</span>
+					<h2>How to play</h2>
+					<p>Select a chip value. You can select a chip value of 1, 5, 10, or 100.</p>
+					<p>Place your bets on the board. You can bet on a single number, a range of numbers, a color, or
+						whether
+						the
+						number will be odd or even.</p>
+					<p>Once you have placed your bets, click the "Confirm Bet" button to place your bets. You cannot
+						undo
+						this
+						action! Once all players have placed their bets, the wheel will spin and the ball will land on a
+						number.
+					</p>
+					<p>If you have bet on the number, you will win. If you have bet on a range of numbers, a color, or
+						odd/even,
+						you
+						will win if the ball lands on a number that matches your bet.</p>
+					<p>If you lose, your bet will be subtracted from your balance. If you win, your bet will be added to
+						your
+						balance. You can click the "Clear Bets" button to clear your bets and start over.</p>
+					<p>You can hover over the numbers on the board to see how much other players have bet for that
+						space.
+					</p>
+					<p>Note: Zero is green, all other numbers are either red or black. Zero only wins when the number is
+						Zero.
+					</p>
+					<p>Good luck!</p>
+					<div>
+						<h2>Payout metrics</h2>
+						<table class="payout-metrics">
+							<tr>
+								<th>Bet</th>
+								<th>Payout</th>
+							</tr>
+							<tr>
+								<td>Single number</td>
+								<td>35 to 1</td>
+							</tr>
+							<tr>
+								<td>2 to 1 (rows)</td>
+								<td>2 to 1</td>
+							</tr>
+							<tr>
+								<td>Color</td>
+								<td>1 to 1</td>
+							</tr>
+							<tr>
+								<td>Odd/Even</td>
+								<td>1 to 1</td>
+							</tr>
+							<tr>
+								<td>1 to 18</td>
+								<td>1 to 1</td>
+							</tr>
+							<tr>
+								<td>19 to 36</td>
+								<td>1 to 1</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-title">Roulette</div>
+	</div>
+	<div class="profile">
+		<div class="dropdown">
+			<a href="{% url 'profile' %}">
+				<img style="border-radius: 50%; height: 3em;" src="{{ profile_picture }}"
+					alt="User profile picture"><br>
+			</a>
+			<div class="dropdown-content">
+				{{user.first_name}} {{user.last_name}} <br>
+				<a href="{% url 'logout' %}">Logout</a>
+			</div>
+		</div>
+	</div>
+	<div class="joinees">
+		<div class='joined-title'>
+			Lobby:
+		</div>
+		<table class="joined">
+			<tr id='user_pictures'></tr>
+			<tr id='user_names'></tr>
+		</table>
+	</div>
+	<audio id="sound" src=""></audio>
+	<div id="spinwheel">
+		{%load static%}
+		<img src="{% static 'img/spinwheel.gif' %}" id="spinwheel-img">
+	</div>
+	<table class="bet_table">
+		<tr>
+			<td rowspan="4" data-value="0" class='dropdown'><button onclick="addToBet(this)" class="green">
+					<table class='dropdown-content-board' id='0'></table>0
+				</button></td>
+		</tr>
+		<tr>
+			<td class="black dropdown" data-value="3"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='3'></table>3
+				</button></td>
+			<td class="red dropdown" data-value="6"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='6'></table>6
+				</button></td>
+			<td class="black dropdown" data-value="9"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='9'></table>9
+				</button></td>
+			<td class="red dropdown" data-value="12"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='12'></table>12
+				</button></td>
+			<td class="black dropdown" data-value="15"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='15'></table>15
+				</button></td>
+			<td class="red dropdown" data-value="18"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='18'></table>18
+				</button></td>
+			<td class="black dropdown" data-value="21"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='21'></table>21
+				</button></td>
+			<td class="red dropdown" data-value="24"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='24'></table>24
+				</button></td>
+			<td class="black dropdown" data-value="27"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='27'></table>27
+				</button></td>
+			<td class="red dropdown" data-value="30"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='30'></table>30
+				</button></td>
+			<td class="black dropdown" data-value="33"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='33'></table>33
+				</button></td>
+			<td class="red dropdown" data-value="36"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='36'></table>36
+				</button></td>
+			<td data-value="2 to 1 (1)" class="dropdown"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='2 to 1 (1)'></table>2 to 1
+				</button></td>
+		</tr>
+		<tr>
+			<td class="red dropdown" data-value="2"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='2'></table>2
+				</button></td>
+			<td class="black dropdown" data-value="5"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='5'></table>5
+				</button></td>
+			<td class="red dropdown" data-value="8"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='8'></table>8
+				</button></td>
+			<td class="black dropdown" data-value="11"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='11'></table>11
+				</button></td>
+			<td class="red dropdown" data-value="14"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='14'></table>14
+				</button></td>
+			<td class="black dropdown" data-value="17"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='17'></table>17
+				</button></td>
+			<td class="red dropdown" data-value="20"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='20'></table>20
+				</button></td>
+			<td class="black dropdown" data-value="23"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='23'></table>23
+				</button></td>
+			<td class="red dropdown" data-value="26"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='26'></table>26
+				</button></td>
+			<td class="black dropdown" data-value="29"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='29'></table>29
+				</button></td>
+			<td class="red dropdown" data-value="32"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='32'></table>32
+				</button></td>
+			<td class="black dropdown" data-value="35"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='35'></table>35
+				</button></td>
+			<td data-value="2 to 1 (2)" class="dropdown"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='2 to 1 (2)'></table>2 to 1
+				</button></td>
+		</tr>
+		<tr>
+			<td class="black dropdown" data-value="1"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='1'></table>1
+				</button></td>
+			<td class="red dropdown" data-value="4"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='4'></table>4
+				</button></td>
+			<td class="black dropdown" data-value="7"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='7'></table>7
+				</button></td>
+			<td class="red dropdown" data-value="10"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='10'></table>10
+				</button></td>
+			<td class="black dropdown" data-value="13"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='13'></table>13
+				</button></td>
+			<td class="red dropdown" data-value="16"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='16'></table>16
+				</button></td>
+			<td class="black dropdown" data-value="19"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='19'></table>19
+				</button></td>
+			<td class="red dropdown" data-value="22"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='22'></table>22
+				</button></td>
+			<td class="black dropdown" data-value="25"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='25'></table>25
+				</button></td>
+			<td class="red dropdown" data-value="28"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='28'></table>28
+				</button></td>
+			<td class="black dropdown" data-value="31"><button onclick="addToBet(this)" class="black">
+					<table class='dropdown-content-board' id='31'></table>31
+				</button></td>
+			<td class="red dropdown" data-value="34"><button onclick="addToBet(this)" class="red">
+					<table class='dropdown-content-board' id='34'></table>34
+				</button></td>
+			<td data-value="2 to 1 (3)" class="dropdown"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='2 to 1 (3)'></table>2 to 1
+				</button></td>
+		</tr>
+		<tr>
+			<td class="spacer"></td>
+			<td colspan="4" class="dropdown" data-value="1st 12"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='1st 12'></table>1st 12
+				</button></td>
+			<td colspan="4" class="dropdown" data-value="2nd 12"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='2nd 12'></table>2nd 12
+				</button></td>
+			<td colspan="4" class="dropdown" data-value="3rd 12"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='3rd 12'></table>3rd 12
+				</button></td>
+			<td class="spacer"></td>
+		</tr>
+		<tr>
+			<td class="spacer"></td>
+			<td colspan="2" class="dropdown" data-value="1 to 18"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='1 to 18'></table>1 to 18
+				</button></td>
+			<td colspan="2" class="dropdown" data-value="Even"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='Even'></table>EVEN
+				</button></td>
+			<td colspan="2" class="dropdown" data-value="Red"><button onclick="addToBet(this)"
+					style="color: red; font-size: 35px;">
+					<table class='dropdown-content-board' id='Red'></table>◆
+				</button></td>
+			<td colspan="2" class="dropdown" data-value="Black"><button onclick="addToBet(this)"
+					style="color: black; font-size: 35px;">
+					<table class='dropdown-content-board' id='Black'></table>◆
+				</button></td>
+			<td colspan="2" class="dropdown" data-value="Odd"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='Odd'></table>ODD
+				</button></td>
+			<td colspan="2" class="dropdown" data-value="19 to 36"><button onclick="addToBet(this)" class="white">
+					<table class='dropdown-content-board' id='19 to 36'></table>19 to 36
+				</button>
+			</td>
+			<td class="spacer"></td>
+		</tr>
+	</table>
+	<div class="chips">
+		<button onclick="selectChip(1)" id='chip_1' class="chip chip-white">1</button>
+		<button onclick="selectChip(5)" id='chip_5' class="chip red">5</button>
+		<button onclick="selectChip(10)" id='chip_10' class="chip blue">10</button>
+		<button onclick="selectChip(100)" id='chip_100' class="chip black">100</button>
+		<button onclick="clearBet()" class="clear">clear</button>
+	</div>
+	<div class="lower-text-container">
+		<div class="lower-text">
+			<span>Player Balance: </span>
+			<span id="player_balance">0</span>
+		</div>
+		<div class="lower-text">
+			<span>Total Bet: </span>
+			<span id="total_bet">0</span>
+		</div>
+	</div>
+	<p id="status">
+		{{ status }}
+	</p>
+	<div class="confirm_bet">
+		<button onClick="placeBet()" class='bets-buttons green'> Confirm Bet </button>
+		<button onClick="clearBet()" class='bets-buttons red'> Clear Bets </button>
+	</div>
+	<!-- Replace this with the Wheel -->
+	<div class="result">
+		<span id="roll" class='roll'></span>
+	</div>
+	<script>
+		window.onload = connectToServer
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+body {
+    background-image: url(https://img.freepik.com/free-photo/casino-games-backdrop-banner-3d-illustration-with-casino-elements-craps-roulette-poker-cards-generative-ai_91128-2286.jpg?size=1024&ext=jpg&ga=GA1.1.646985042.1698941871);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Cedarville Cursive', cursive;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+}
+
+.roulette-table {
+    width: 800px;
+    height: 400px;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.roulette-title {
+    font-size: 5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.quote {
+    font-weight: bold;
+    color: #fff;
+}
+
+.login {
+    font-weight: bold;
+}
+
+.google-login-button {
+    background-color: #DF0030;
+    color: white;
+    padding: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10em;
+    text-align: center;
+    margin-top: 4em;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.google-logo img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5em;
+}
+
+.google-login-button:hover {
+    background-color: #DF0030;
+    color: white;
+    opacity: 0.8;
+}
+
+
+.google-login-button:hover {
+    background-color: #DF0030;
+    color: white;
+    opacity: 0.8;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .body {
+        background-size: auto;
+    }
+
+    .roulette-table {
+        width: auto;
+        height: 100vh;
+    }
+
+    .quote {
+        text-align: center;
+    }
+}

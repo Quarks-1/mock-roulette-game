@@ -1,0 +1,12 @@
+django
+social-auth-app-django
+stripe
+configparser
+gunicorn
+daphne
+channels
+jsonfield
+whitenoise[brotli]>=6.0,<7.0
+dj-database-url>=2.0,<3.0
+psycopg[c]; sys_platform == "linux"
+psycopg[binary]; sys_platform != "linux"

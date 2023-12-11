@@ -1,0 +1,166 @@
+body {
+    background-color: white;
+    font-family: sans-serif;
+    margin: 7em 10em;
+}
+
+.content {
+    display: flex;
+}
+
+.profile-picture {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.change-profile-picture {
+    margin-top: 1em;
+}
+
+.right-col {
+    margin-left: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+}
+
+.title {
+    margin-bottom: 1em;
+}
+
+.logout {
+    background-color: #DF0030;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 1em 0;
+}
+
+.profile-name {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.profile-balance {
+    font-size: 1.5em;
+}
+
+.withdraw-button {
+    background-color: #DF0030;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 6em;
+    text-align: center;
+}
+
+.withdraw-button:hover {
+    background-color: #DF0030;
+    color: white;
+    opacity: 0.8;
+}
+
+#achievements-title {
+    font-size: 2em;
+
+    >li {
+        font-size: 1.5em;
+    }
+}
+
+#payment-element {
+    width: 25em;
+    margin-top: 1em;
+}
+
+.wallet-update {
+    border: 2px dashed black;
+    font-size: 1.5em;
+    padding: 1em;
+    margin-top: 1.5em;
+    width: 20em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.play-btn {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    font-size: 20px;
+    align-self: center;
+}
+
+.play-btn:hover {
+    background-color: #e67e22;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        margin: 3em 2em;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-picture {
+        width: 200px;
+        height: 200px;
+    }
+
+    .right-col {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-name {
+        font-size: 2em;
+    }
+
+    .wallet-update {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.75em;
+
+        >label {
+            flex: 0.2 0.5 auto;
+        }
+
+        >input {
+            width: 7em;
+            flex: 0.2 0.5 auto;
+        }
+
+        >button {
+            width: 4em;
+            padding: 5px;
+            flex: 0.2 0.5 auto;
+        }
+    }
+
+    .profile-picture {
+        margin: 0 auto;
+    }
+
+}

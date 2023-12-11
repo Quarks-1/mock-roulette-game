@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Roulette</title>
+    {% load static %}
+    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Raleway:wght@200&display=swap"
+        rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="{% static 'js/home.js' %}" defer></script>
+    <link rel="shortcut icon" href="{%  static 'img/favicon.ico' %}">
+</head>
+
+<body>
+    <div class="roulette-table">
+        <div class="roulette-title">Roulette</div>
+        <span class="quote" id="quote">Take a spin, place your bet, and let the wheel of fortune decide your fate ...
+        </span>
+        <div class="google-login-button" id="googleLoginButton">
+            <span class="google-logo">
+                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+                    alt="Google Logo">
+            </span>
+            <span class="login">Login with Google</span>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('googleLoginButton').addEventListener('click', function () {
+        // Redirect to the Google OAuth login URL
+        window.location.href = "{% url 'social:begin' 'google-oauth2' %}";
+    });
+</script>
+
+</html>

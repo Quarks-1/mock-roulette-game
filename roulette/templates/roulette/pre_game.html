@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Game Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9f5d4787f3.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/pre_game.css' %}">
+    <link rel=" shortcut icon" href="{%  static 'img/favicon.ico' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div><i class="fa-solid fa-wallet"></i> Balance: ${{ user.profile.balance }}</div>
+            <div class="profile">
+                <div class="dropdown">
+                    <a href="{% url 'profile' %}">
+                        <img style="border-radius: 50%; height: 3em;" src="{{ profile_picture }}"
+                            alt="User profile picture"><br>
+                    </a>
+                    <div class="dropdown-content">
+                        {{user.first_name}} {{user.last_name}} <br>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tagline text-container">
+            <div>
+                <h1>Roulette</h1>
+                <div id="quote">
+                    <p>"Careful before you bet it all"</p>
+                </div>
+            </div>
+            <div>
+                <a href="{% url 'game' %}"><button class="play-btn">PLAY</button></a>
+            </div>
+        </div>
+        <div class="footer d-flex justify-content-between align-items-end">
+            <p class="age-limit">Only for 18+</p>
+            <hr />
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

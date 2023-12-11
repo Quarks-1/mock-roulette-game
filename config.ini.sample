@@ -1,0 +1,12 @@
+
+
+[Django]
+secret=pk-()cdh(ct#5kqj$y&*xw2j#in^+ku8wc1+ev5+_96d@q$x$)
+
+[GoogleOAuth2]
+client_id=366473646353-i8801ail96lstg59hi100kpa9ee7qnsl.apps.googleusercontent.com
+client_secret=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
+
+[roulette]
+title= Roulette Webapp game
+users=@andrew.cmu.edu

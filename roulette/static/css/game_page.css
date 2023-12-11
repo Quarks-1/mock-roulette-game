@@ -1,0 +1,452 @@
+body {
+	background-image: url('../../static/img/roulette.jpg');
+}
+
+.header {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.page-title {
+	text-align: center;
+	color: white;
+	font-size: 3vw;
+	flex: 0.33 0.67;
+}
+
+.instructions-container {
+	flex: 0.33 0.67;
+}
+
+tr,
+th,
+td {
+	border: 1px solid white;
+	text-align: center;
+}
+
+.spacer {
+	border: 0px;
+}
+
+.joinees {
+	margin: 2em auto;
+}
+
+.joined-title {
+	font-size: 1.5vw;
+	text-align: center;
+	color: white;
+}
+
+.joined {
+	margin: 0 auto;
+}
+
+.joined .confirm_bet {
+	margin-left: auto;
+	margin-right: auto;
+	border-spacing: 10px;
+	width: 40%;
+}
+
+.lower-text-container {
+	display: flex;
+	justify-content: center;
+}
+
+.lower-text {
+	font-size: 1.5em;
+	color: white;
+	margin-top: 1em;
+
+	&:first-child {
+		margin-right: 2em;
+	}
+}
+
+#status {
+	margin-top: 2em;
+	color: white;
+	font-size: 2em;
+	text-align: center;
+}
+
+.confirm_bet {
+	display: flex;
+	justify-content: center;
+}
+
+.bets-buttons {
+	color: white;
+	font-size: 1.5em;
+	padding: 0.5em;
+	border-radius: 1em;
+	cursor: pointer;
+	margin-bottom: 1em;
+
+	&:first-child {
+		margin-right: 2em;
+	}
+
+	&:hover {
+		background-color: grey;
+	}
+}
+
+.bet_table {
+	width: 90%;
+	height: 20em;
+	margin: 0 auto;
+	color: white;
+	background-color: green;
+}
+
+.bet_table table {
+	border: 1px solid white;
+	text-align: center;
+}
+
+.player {
+	color: white;
+	margin-top: 1em;
+	width: 100%;
+	font-size: large;
+}
+
+.player table tr td {
+	border: 1px solid white;
+	text-align: center;
+	font-size: large;
+}
+
+.pfp {
+	height: 10%;
+	width: 10%;
+}
+
+.red {
+	background-color: red;
+	font-weight: bold;
+}
+
+.black {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+.white {
+	color: white;
+	font-weight: bold;
+}
+
+.profile {
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	padding: 10px;
+}
+
+.pfp {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.name {
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
+
+button {
+	background-color: transparent;
+}
+
+.dropdown {
+	text-align: center;
+}
+
+.dropdown-content {
+	display: none;
+	border-radius: 0.5em;
+	position: absolute;
+	right: 2vh;
+	font-size: 1.5vw;
+	background-color: #ecf0f1;
+	min-width: 15vw;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border: 1px solid grey;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+}
+
+.dropdown-content a button {
+	font-size: 1vw;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+
+.dropdown-content-board {
+	display: none;
+	position: absolute;
+	font-size: 1.5vw;
+	background-color: white;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	text-align: right;
+	padding: 10px;
+	color: black;
+}
+
+.dropdown-content-board a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content-board a button {
+	font-size: 1.5vw;
+}
+
+.dropdown-content-board a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content-board {
+	display: block;
+}
+
+.chips {
+	margin-top: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chip {
+	margin: 1em;
+	font-size: 1.5em;
+	position: relative;
+	display: inline-block;
+	width: 70px;
+	color: white;
+	height: 70px;
+	box-shadow: 0 0 5px 1px rgba(246, 246, 246, 0.5),
+		0 0 3px 0 rgba(246, 246, 246, 0.5) inset;
+	border-radius: 50%;
+	background-size: 151px 151px;
+	background-position: center center;
+	cursor: pointer;
+}
+
+.chip:before {
+	position: absolute;
+	content: "";
+	z-index: 1;
+	border-radius: 50%;
+	top: 9px;
+	left: 9px;
+}
+
+.chip:after {
+	z-index: 2;
+	position: absolute;
+	text-align: center;
+	font: bold 50px/111px Arial;
+	white-space: pre;
+	border-radius: 50%;
+	top: 20px;
+	left: 20px;
+	text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.3), 1px 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.chip:hover {
+	opacity: 0.7;
+}
+
+.chip.selected {
+	border: 10px solid green;
+}
+
+.chip-white {
+	background-color: #ddd;
+}
+
+.red {
+	background-color: #800500;
+}
+
+.blue {
+	background-color: #001699;
+}
+
+.black {
+	background-color: #222;
+}
+
+.clear {
+	background-color: red;
+	font-size: large;
+	padding: 0 1em;
+	border-radius: 1em;
+	height: 3em;
+	margin-left: 5em;
+	cursor: pointer;
+}
+
+.clear:hover {
+	background-color: rgb(230, 115, 115);
+}
+
+.green {
+	background-color: green;
+	font-weight: bold;
+	color: white;
+}
+
+.ghost {
+	visibility: hidden;
+}
+
+.result {
+	display: flex;
+	justify-content: center;
+}
+
+.roll {
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	padding: 0.5em;
+	font-size: 40px;
+	color: white;
+	font-weight: bold;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+	width: 50vw;
+	text-align: center;
+	height: 50px;
+	border-radius: 1em;
+	margin-bottom: 1em;
+	background: linear-gradient(45deg,
+			rgba(255, 0, 0, 1) 0%,
+			rgba(255, 154, 0, 1) 10%,
+			rgba(208, 222, 33, 1) 20%,
+			rgba(79, 220, 74, 1) 30%,
+			rgba(63, 218, 216, 1) 40%,
+			rgba(47, 201, 226, 1) 50%,
+			rgba(28, 127, 238, 1) 60%,
+			rgba(95, 21, 242, 1) 70%,
+			rgba(186, 12, 248, 1) 80%,
+			rgba(251, 7, 217, 1) 90%,
+			rgba(255, 0, 0, 1) 100%);
+}
+
+.roll:empty {
+	display: none;
+}
+
+.roll-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#instructions {
+	cursor: pointer;
+	font-size: 2em;
+	color: white;
+	border: 1px solid white;
+	border-radius: 1em;
+	width: fit-content;
+	padding: 0.5em;
+
+	&:hover {
+		background-color: rgb(182, 176, 176);
+	}
+}
+
+#instructions-modal {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border-radius: 2em;
+	border: 1px solid black;
+	width: 80%;
+
+	>h2 {
+		text-align: center;
+		font-size: 2em;
+	}
+}
+
+.close {
+	font-size: 2em;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+}
+
+.payout-metrics {
+	border: 1px solid black;
+
+	>th,
+	>td {
+		border: 1px solid black;
+	}
+}
+
+#spinwheel {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+#spinwheel-img {
+	margin: 10% 25%;
+	width: 50%;
+}
